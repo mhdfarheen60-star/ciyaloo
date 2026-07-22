@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - CIYALOO</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    .cart-page {
+      background-color: #ffffff;
+      color: #7A5C3E;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
+    .cart-navbar {
+      background: #fff;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(122, 92, 62, 0.08);
+    }
+
+    .cart-navbar .navbar-brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #1a1a1a;
+      letter-spacing: 1.5px;
+    }
+
+    .cart-navbar .nav-link {
+      color: #555 !important;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      transition: color 0.4s ease;
+    }
+
+    .cart-navbar .nav-link:hover,
+    .cart-navbar .nav-link.active {
+      color: #7A5C3E !important;
+    }
+
+    .cart-navbar .nav-icons i {
+      font-size: 20px;
+      color: #555;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      margin-left: 18px;
+    }
+
+    .cart-navbar .nav-icons i:hover {
+      color: #7A5C3E;
+    }
+
+    .cart-navbar .cart-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-left: 18px;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .cart-navbar .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #7A5C3E;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      padding: 2px 6px;
+      line-height: 1;
+      font-weight: 500;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .cart-main {
+      padding-top: 70px;
+      padding-bottom: 100px;
+    }
+
+    .breadcrumb-cart {
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 40px;
+      padding-left: 0;
+      background: none;
+    }
+
+    .breadcrumb-cart a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb-cart a:hover {
+      color: #7A5C3E;
+    }
+
+    .breadcrumb-cart .separator {
+      margin: 0 10px;
+      color: #bbb;
+    }
+
+    .cart-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 500;
+      color: #1a1a1a;
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .cart-message {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: #777;
+      margin-bottom: 30px;
+      letter-spacing: 0.3px;
+    }
+
+    .cart-continue {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7A5C3E;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color 0.4s ease;
+    }
+
+    .cart-continue::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.35;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform-origin: left;
+    }
+
+    .cart-continue:hover {
+      color: #5a432d;
+    }
+
+    .cart-continue:hover::after {
+      opacity: 0.7;
+    }
+
+    .cart-table thead th {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #999;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 12px;
+    }
+
+    .cart-table tbody td {
+      vertical-align: middle;
+      padding: 24px 12px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .cart-table .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .cart-table .product-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #7A5C3E;
+    }
+
+    .cart-table .qty-btn {
+      border: 1px solid #e0d5c5;
+      color: #7A5C3E;
+      background: #fff;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .cart-table .qty-btn:hover {
+      background: #7A5C3E;
+      color: #fff;
+      border-color: #7A5C3E;
+    }
+
+    .cart-table .qty-input {
+      border: 1px solid #e0d5c5;
+      color: #7A5C3E;
+      font-size: 13px;
+      height: 32px;
+    }
+
+    .cart-table .item-subtotal {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #7A5C3E;
+      font-weight: 500;
+    }
+
+    .cart-table .remove-btn {
+      color: #999;
+      background: none;
+      border: none;
+      padding: 4px 8px;
+      transition: color 0.3s ease;
+    }
+
+    .cart-table .remove-btn:hover {
+      color: #c0392b;
+    }
+
+    .cart-summary-card {
+      background: #fff;
+      border: 1px solid #f0ebe3;
+      padding: 36px 32px;
+    }
+
+    .cart-summary-card h5 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+    }
+
+    .cart-summary-card .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .cart-summary-card .summary-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .cart-checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-top: 24px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.4s ease;
+    }
+
+    .cart-checkout-btn:hover {
+      background: #7A5C3E;
+      color: #fff;
+    }
+
+    .cart-footer {
+      background: #1b1b1b;
+      color: #fff;
+      padding: 70px 0 50px;
+      margin-top: auto;
+    }
+
+    .cart-footer h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .cart-footer .footer-link {
+      color: #aaa;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 14px;
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+
+    .cart-footer .footer-link:hover {
+      color: #d4af37;
+    }
+
+    .cart-footer .newsletter-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .cart-footer .input-group input {
+      height: 48px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .cart-footer .input-group input::placeholder {
+      color: #777;
+    }
+
+    .cart-footer .input-group .btn {
+      background: #d4af37;
+      border: none;
+      color: #1b1b1b;
+      padding: 0 20px;
+      font-size: 18px;
+      transition: background 0.3s ease;
+    }
+
+    .cart-footer .input-group .btn:hover {
+      background: #bfa030;
+    }
+
+    .cart-footer .social-icons {
+      margin-bottom: 40px;
+    }
+
+    .cart-footer .social-icons i {
+      font-size: 20px;
+      color: #aaa;
+      margin-right: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .cart-footer .social-icons i:hover {
+      color: #d4af37;
+    }
+
+    .cart-footer hr {
+      border-color: rgba(255, 255, 255, 0.08);
+      margin: 50px 0;
+    }
+
+    .cart-footer .connect h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .cart-footer .connect h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .cart-footer .connect h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .cart-footer .connect h3 a:hover {
+      color: #d4af37;
+    }
+
+    .cart-footer .connect h4:last-of-type {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .cart-main {
+        padding-top: 50px;
+        padding-bottom: 70px;
+      }
+
+      .cart-heading {
+        font-size: 38px;
+      }
+
+      .cart-navbar {
+        padding: 16px 0;
+      }
+
+      .cart-summary-card {
+        margin-top: 30px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .cart-heading {
+        font-size: 32px;
+      }
+
+      .breadcrumb-cart {
+        font-size: 11px;
+      }
+
+      .cart-table thead {
+        display: none;
+      }
+
+      .cart-table tbody td {
+        display: block;
+        padding: 12px 0;
+        border: none;
+      }
+
+      .cart-table tbody tr {
+        border-bottom: 1px solid #f5f5f5;
+      }
+    }
+  </style>
+</head>
+<body class="cart-page d-flex flex-column">
+
+  <nav class="navbar navbar-expand-lg cart-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">CIYALOO</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cartMenu" aria-controls="cartMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="cartMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="signature.html">Signature Perfume</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-icons d-flex align-items-center">
+          <a href="login.html" class="cart-link" aria-label="Login" style="color: #7A5C3E; text-decoration: none; margin-right: 18px;">
+            <i class="bi bi-person" style="font-size: 20px;"></i>
+          </a>
+          <a href="register.html" class="cart-link" aria-label="Register" style="color: #7A5C3E; text-decoration: none; margin-right: 18px; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;">
+            Register
+          </a>
+          <a href="cart.html" class="cart-link" aria-label="Cart">
+            <i class="bi bi-cart3"></i>
+            <span class="cart-badge">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="cart-main flex-grow-1">
+    <div class="container">
+      <nav aria-label="breadcrumb" class="breadcrumb-cart">
+        <a href="index.html">Home</a>
+        <span class="separator">/</span>
+        <span>Cart</span>
+      </nav>
+
+      <h1 class="cart-heading">Shopping Cart</h1>
+
+      <div id="cart-empty-state">
+        <p class="cart-message">Your cart is currently empty.</p>
+        <a href="shop.html" class="cart-continue">Continue shopping</a>
+      </div>
+
+      <div id="cart-items" style="display: none;">
+        <div class="table-responsive">
+          <table class="table cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="cart-table-body">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4">
+          <a href="shop.html" class="cart-continue">Continue shopping</a>
+        </div>
+      </div>
+
+      <div class="row mt-5" id="cart-summary" style="display: none;">
+        <div class="col-lg-4 offset-lg-8">
+          <div class="cart-summary-card">
+            <h5>Cart Summary</h5>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="cart-subtotal">AED 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>Free</span>
+            </div>
+            <div class="summary-total">
+              <span>Total</span>
+              <span id="cart-total">AED 0</span>
+            </div>
+            <a href="#" class="cart-checkout-btn">Proceed to Checkout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="cart-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 mb-5">
+          <div class="social-icons">
+            <i class="bi bi-facebook"></i>
+            <i class="bi bi-instagram"></i>
+            <i class="bi bi-youtube"></i>
+            <i class="bi bi-pinterest"></i>
+          </div>
+        </div>
+
+        <div class="col-lg-2 mb-5">
+          <h4>Company</h4>
+          <a href="about.html" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Blogs</a>
+        </div>
+
+        <div class="col-lg-3 mb-5">
+          <h4>Support</h4>
+          <a href="#" class="footer-link">FAQs</a>
+          <a href="#" class="footer-link">Track Order</a>
+          <a href="#" class="footer-link">Store Locator</a>
+          <a href="#" class="footer-link">Customer Services</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+          <a href="#" class="footer-link">Shipping Policy</a>
+          <a href="#" class="footer-link">Return & Refund Policy</a>
+        </div>
+
+        <div class="col-lg-4">
+          <h1 class="newsletter-heading">Luxury Fragrances<br>Crafted for Elegance & Lasting Impression</h1>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Enter your email">
+            <button class="btn"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="connect">
+            <h4>Let's Connect</h4>
+            <h3><a href="tel:+971553366389">+971553366389</a></h3>
+            <h4>ciyaloperfumes@gmail.com</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="cart.js"></script>
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/971553366389?text=Hello%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+</a>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CIYALOO premium perfumes—signature fragrances, best sellers, and shop collections online."/>
+<title>CIYALOO Website</title>
+<link rel="icon" href="favicon.ico">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">CIYALOO</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+                <li class="nav-item"><a class="nav-link" href="signature.html">SIGNATURE PERFUME</a></li>
+                <li class="nav-item"><a class="nav-link" href="shop.html">SHOP</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">ABOUT</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="register.html" class="cart-link" aria-label="Register" style="margin-left: 18px; color: #7A5C3E; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase;">Register</a>
+                <a href="https://wa.me/971553366389?text=Hello%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="cart-link" aria-label="WhatsApp" style="margin-left: 18px; color: #25D366; text-decoration: none;">
+                    <i class="bi bi-whatsapp" style="font-size: 24px;"></i>
+                </a>
+                <a href="cart.html" class="cart-link" aria-label="Cart">
+                    <i class="bi bi-cart3"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Carousel -->
+<section class="container mt-4">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="css/img/mireabanner.png" class="d-block w-100" alt="MIREA perfume banner">
+            </div>
+            <div class="carousel-item">
+                <img src="css/img/bannerone.jpeg" class="d-block w-100" alt="CIYALOO perfume banner 1">
+            </div>
+            <div class="carousel-item">
+                <img src="css/img/bannertwo.png" class="d-block w-100" alt="CIYALOO perfume banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="css/img/bannerthree.jpeg" class="d-block w-100" alt="CIYALOO perfume banner 3">
+            </div>
+            <div class="carousel-item">
+                <img src="css/img/banner3.jpeg" class="d-block w-100" alt="CIYALOO perfume banner 4">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+<!-- Best Sellers -->
+<section class="container py-5">
+    <h2 class="text-center mb-4">Best Sellers</h2>
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="card h-100">
+                <img src="css/img/mirea.png" class="card-img-top" alt="MIREA perfume bottle" loading="lazy">
+                <div class="card-body text-center">
+                    <h5>MIREA</h5>
+                    <p class="product-price">AED 109</p>
+                    <a href="cart.html" class="btn btn-dark" onclick="addToCart({name:'MIREA', price:109, image:'css/img/mirea.png'}); return true;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100">
+                <img src="css/img/zarah.png" class="card-img-top" alt="ZARAH perfume bottle" loading="lazy">
+                <div class="card-body text-center">
+                    <h5>ZARAH</h5>
+                    <p class="product-price">AED 79</p>
+                    <a href="cart.html" class="btn btn-dark" onclick="addToCart({name:'ZARAH', price:79, image:'css/img/zarah.png'}); return true;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100">
+                <img src="css/img/ezraa.jpeg" class="card-img-top" alt="EZRA perfume bottle" loading="lazy">
+                <div class="card-body text-center">
+                    <h5>EZRA</h5>
+                    <p class="product-price">AED 79</p>
+                    <a href="cart.html" class="btn btn-dark" onclick="addToCart({name:'EZRA', price:79, image:'css/img/ezraa.jpeg'}); return true;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100">
+                <img src="css/img/espoir.png" class="card-img-top" alt="ESPOIR perfume bottle" loading="lazy">
+                <div class="card-body text-center">
+                    <h5>ESPOIR</h5>
+                    <p class="product-price">AED 109</p>
+                    <a href="cart.html" class="btn btn-dark" onclick="addToCart({name:'ESPOIR', price:109, image:'css/img/espoir.png'}); return true;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Promotional Banner -->
+<section class="container py-5">
+    <div class="row bg-dark text-white rounded align-items-center p-4 p-md-5">
+        <div class="col-lg-6 mb-3 mb-lg-0">
+            <h2>Premium Collection</h2>
+            <p>Experience luxury fragrances with exclusive offers.</p>
+            <a href="shop.html" class="btn btn-light">Explore</a>
+        </div>
+        <div class="col-lg-6">
+            <img src="css/img/bannerone.jpeg" class="img-fluid rounded" alt="Premium perfume collection banner" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- Shop Category -->
+<section class="container py-5">
+    <h2 class="text-center mb-5">Shop by Category</h2>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4 col-6">
+            <div class="text-center">
+                <img src="css/img/MIREA01.png" class="img-fluid rounded" alt="MIREA perfume category" loading="lazy">
+                <h4 class="mt-3">MIREA</h4>
+            </div>
+        </div>
+        <div class="col-md-4 col-6">
+            <div class="text-center">
+                <img src="css/img/ezrabanner.png" class="img-fluid rounded" alt="EZRA perfume category" loading="lazy">
+                <h4 class="mt-3">EZRA</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="css/img/aboutus.png" class="img-fluid rounded" alt="About CIYALOO Perfumes">
+            </div>
+            <div class="col-lg-6">
+                <h2>About CIYALOO</h2>
+                <p>We create premium perfumes using carefully selected ingredients to deliver unforgettable fragrances for every personality.</p>
+                <a href="about.html" class="btn btn-dark">Read More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews -->
+<section class="container py-5">
+    <h2 class="text-center mb-5">Customer Reviews</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card p-4 h-100">
+                <p class="stars" aria-label="5 stars">★★★★★</p>
+                <p class="mt-3">Amazing fragrance and long lasting.</p>
+                <h5 class="review-author">Rahul</h5>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 h-100">
+                <p class="stars" aria-label="5 stars">★★★★★</p>
+                <p class="mt-3">Premium quality at affordable price.</p>
+                <h5 class="review-author">Anjali</h5>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4 h-100">
+                <p class="stars" aria-label="5 stars">★★★★★</p>
+                <p class="mt-3">Will definitely purchase again.</p>
+                <h5 class="review-author">Arjun</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="bg-dark text-white py-5">
+    <div class="container text-center">
+        <h2>Subscribe</h2>
+        <p>Get updates about new arrivals and offers.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Enter Email" aria-label="Email for newsletter">
+                    <button class="btn btn-light" type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 mb-4">
+          <div class="fs-3">
+            <i class="bi bi-facebook me-3"></i>
+            <i class="bi bi-instagram me-3"></i>
+            <i class="bi bi-youtube me-3"></i>
+            <i class="bi bi-pinterest"></i>
+          </div>
+        </div>
+
+        <div class="col-lg-2 mb-4">
+          <h4 class="mb-3">Company Info</h4>
+          <ul class="list-unstyled">
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+            <li><a href="#" class="footer-link">Blogs</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 mb-4">
+          <h4 class="mb-3">Support</h4>
+          <ul class="list-unstyled">
+            <li><a href="#" class="footer-link">FAQs</a></li>
+            <li><a href="#" class="footer-link">Track Order</a></li>
+            <li><a href="#" class="footer-link">Store Locator</a></li>
+            <li><a href="#" class="footer-link">Customer Services</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Shipping Policy</a></li>
+            <li><a href="#" class="footer-link">Return & Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h1 class="fw-bold mb-4">Luxury Fragrances<br>Crafted for Elegance & Lasting Impression</h1>
+          <div class="input-group">
+            <input type="email" class="form-control bg-secondary border-0 text-white" placeholder="Enter your email">
+            <button class="btn btn-light"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <h4>Let's Connect</h4>
+          <h3 class="mt-3">+971553366389</h3>
+          <h4>ciyaloperfumes@gmail.com</h4>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- Floating WhatsApp Button -->
+<a href="https://wa.me/971553366389?text=Hello%20I%20would%20like%20to%20know%20more." target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="cart.js"></script>
+</body>
+</html>

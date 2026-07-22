@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | CIYALOO</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="register-page">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CIYALOO</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#authMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="authMenu">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="register.html">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="register-main">
+        <div class="register-card register-split">
+
+            <!-- Elegant perfume image (desktop only) -->
+            <aside class="register-image">
+                <img src="css/img/hero.jpeg" alt="CIYALOO luxury fragrance" class="img-fluid w-100 h-100" style="object-fit:cover; display:block;">
+                <div class="register-image-overlay">
+                    <h3>Timeless Luxury, Bottled.</h3>
+                    <p>Discover fragrances crafted for those who leave a lasting impression.</p>
+                </div>
+            </aside>
+
+            <!-- Form side -->
+            <section class="register-form-side">
+
+                <!-- Why Join CIYALOO? benefits card -->
+                <div class="benefits-card">
+                    <h4>Why Join CIYALOO?</h4>
+                    <ul class="benefits-list">
+                        <li><i class="bi bi-gift"></i> Exclusive member-only discounts</li>
+                        <li><i class="bi bi-stars"></i> Early access to new launches</li>
+                        <li><i class="bi bi-truck"></i> Free luxury gift wrapping</li>
+                        <li><i class="bi bi-heart"></i> Personalised fragrance recommendations</li>
+                        <li><i class="bi bi-arrow-repeat"></i> Easy returns &amp; rewards points</li>
+                    </ul>
+                </div>
+
+                <div class="register-header">
+                    <div class="brand-icon">
+                        <i class="bi bi-gem"></i>
+                    </div>
+                    <h2 class="register-title">Create Your Account</h2>
+                    <p class="register-subtitle">
+                        Join CIYALOO and discover timeless luxury fragrances.
+                    </p>
+                </div>
+
+                <form id="registerForm" class="register-form" novalidate>
+                    <div class="row g-3">
+
+                        <!-- Full Name -->
+                        <div class="col-12">
+                            <label for="fullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input id="fullName" name="fullName" type="text" class="form-control" placeholder="Your full name" required autocomplete="name" autofocus />
+                            </div>
+                            <div class="field-feedback" data-for="fullName"></div>
+                        </div>
+
+                        <!-- Username -->
+                        <div class="col-12">
+                            <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-at"></i></span>
+                                <input id="username" name="username" type="text" class="form-control" placeholder="Choose a username" required autocomplete="username" />
+                            </div>
+                            <div class="field-feedback" data-for="username"></div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input id="email" name="email" type="email" class="form-control" placeholder="name@example.com" required autocomplete="email" />
+                            </div>
+                            <div class="field-feedback" data-for="email"></div>
+                        </div>
+
+                        <!-- Phone Number (with country code) -->
+                        <div class="col-12">
+                            <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <select class="form-select country-code" id="countryCode" required>
+                                    <option value="+971" selected>+971</option>
+                                    <option value="+91">+91</option>
+                                    <option value="+966">+966</option>
+                                    <option value="+44">+44</option>
+                                    <option value="+1">+1</option>
+                                </select>
+                                <input id="phone" name="phone" type="tel" class="form-control" placeholder="Phone number" required inputmode="tel" autocomplete="tel" />
+                            </div>
+                            <div class="field-feedback" data-for="phone"></div>
+                        </div>
+
+                        <!-- Country -->
+                        <div class="col-12">
+                            <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
+                            <select id="country" name="country" class="form-select" required>
+                                <option value="" selected disabled>Select your country</option>
+                                <option value="IN">India</option>
+                                <option value="US">United States</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="AE">United Arab Emirates</option>
+                                <option value="NG">Nigeria</option>
+                                <option value="CA">Canada</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div class="field-feedback" data-for="country"></div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="col-12">
+                            <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                <input id="password" name="password" type="password" class="form-control" placeholder="Create a password" required minlength="8" autocomplete="new-password" />
+                                <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn1" aria-label="Show password">
+                                    <i class="bi bi-eye" id="eye1"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength mt-2" aria-hidden="true">
+                                <div class="strength-bar" id="strengthBar"></div>
+                            </div>
+                            <div class="mt-2 small text-muted" id="passwordStrengthText">Strength: —</div>
+                            <div class="field-feedback" data-for="password"></div>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="col-12">
+                            <label for="confirmPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" placeholder="Re-enter password" required autocomplete="new-password" />
+                                <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn2" aria-label="Show confirm password">
+                                    <i class="bi bi-eye" id="eye2"></i>
+                                </button>
+                            </div>
+                            <div class="field-feedback" data-for="confirmPassword"></div>
+                        </div>
+
+                        <!-- Terms & Conditions -->
+                        <div class="col-12">
+                            <div class="verify-box">
+                                <input class="form-check-input" id="agreeTerms" name="agreeTerms" type="checkbox" required />
+                                <label for="agreeTerms" class="form-check-label">
+                                    I agree to the <a href="#" class="register-link">Terms &amp; Conditions</a> <span class="text-danger">*</span>
+                                </label>
+                            </div>
+                            <div class="field-feedback" data-for="agreeTerms"></div>
+                        </div>
+
+                        <!-- Newsletter opt-in -->
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" id="newsletter" name="newsletter" type="checkbox" />
+                                <label for="newsletter" class="form-check-label">
+                                    Receive exclusive offers and new arrivals
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Secure SSL badge -->
+                        <div class="col-12">
+                            <div class="secure-box">
+                                <i class="bi bi-shield-fill-check"></i> Secure SSL enabled. Data protected in transit.
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="col-12">
+                            <div class="d-grid gap-2">
+                                <button id="submitBtn" class="btn btn-primary auth-btn" type="submit">
+                                    Create Account
+                                </button>
+                                <div id="loadingSpinner" class="verify-loading" style="display:none;">
+                                    Creating your account... <span class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Divider + Social sign-in -->
+                        <div class="col-12">
+                            <div class="divider"><span>OR</span></div>
+                            <div class="social-login">
+                                <button type="button" class="btn social-btn">
+                                    <i class="bi bi-google"></i> Continue with Google
+                                </button>
+                                <button type="button" class="btn social-btn">
+                                    <i class="bi bi-apple"></i> Continue with Apple
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Login link -->
+                        <div class="col-12 text-center mt-3">
+                            Already have an account? <a href="login.html" class="register-link">Login</a>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="col-12">
+                            <div id="formMessage" class="mt-3" role="alert" style="display:none;"></div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const form = document.getElementById('registerForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const formMessage = document.getElementById('formMessage');
+
+        const fullName = document.getElementById('fullName');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+        const country = document.getElementById('country');
+        const countryCode = document.getElementById('countryCode');
+
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const agreeTerms = document.getElementById('agreeTerms');
+
+        const strengthBar = document.getElementById('strengthBar');
+        const passwordStrengthText = document.getElementById('passwordStrengthText');
+
+        const eye1 = document.getElementById('eye1');
+        const eye2 = document.getElementById('eye2');
+
+        function setFeedback(fieldName, message) {
+            const el = document.querySelector('[data-for="' + fieldName + '"]');
+            if (!el) return;
+            el.textContent = message || '';
+            el.style.display = message ? 'block' : 'none';
+        }
+
+        function clearAllFeedback() {
+            ['fullName','username','email','phone','country','password','confirmPassword','agreeTerms'].forEach(k => setFeedback(k, ''));
+        }
+
+        function isValidEmail(v) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v).trim());
+        }
+
+        function normalizePhone(v) {
+            return String(v).replace(/[\s-()]/g, '');
+        }
+
+        function isValidPhone(v) {
+            const n = normalizePhone(v);
+            const digits = n.startsWith('+') ? n.slice(1) : n;
+            return /^\+?\d{10,15}$/.test(n) && digits.length >= 10 && digits.length <= 15;
+        }
+
+        function passwordChecks(p) {
+            const val = String(p);
+            return {
+                length: val.length >= 8,
+                upper: /[A-Z]/.test(val),
+                lower: /[a-z]/.test(val),
+                number: /\d/.test(val),
+                special: /[^A-Za-z0-9]/.test(val),
+            };
+        }
+
+        function scorePassword(p) {
+            const c = passwordChecks(p);
+            let score = 0;
+            if (c.length) score += 20;
+            if (c.upper) score += 20;
+            if (c.lower) score += 20;
+            if (c.number) score += 20;
+            if (c.special) score += 20;
+            return Math.max(0, Math.min(100, score));
+        }
+
+        function updatePasswordMeter() {
+            const p = password.value;
+            const score = scorePassword(p);
+            strengthBar.style.width = score + '%';
+
+            let color = '#dc3545';
+            let label = 'Weak';
+            if (score >= 80) { color = '#198754'; label = 'Strong'; }
+            else if (score >= 50) { color = '#ffc107'; label = 'Good'; }
+
+            strengthBar.style.background = color;
+            passwordStrengthText.textContent = p.length ? 'Strength: ' + label : 'Strength: —';
+        }
+
+        function togglePassword(inputEl, eyeEl) {
+            if (inputEl.type === 'password') {
+                inputEl.type = 'text';
+                eyeEl.className = 'bi bi-eye-slash';
+            } else {
+                inputEl.type = 'password';
+                eyeEl.className = 'bi bi-eye';
+            }
+        }
+
+        document.getElementById('togglePasswordBtn1').addEventListener('click', () => togglePassword(password, eye1));
+        document.getElementById('togglePasswordBtn2').addEventListener('click', () => togglePassword(confirmPassword, eye2));
+
+        password.addEventListener('input', () => {
+            updatePasswordMeter();
+            const checks = passwordChecks(password.value);
+            if (!password.value) {
+                setFeedback('password', '');
+            } else {
+                const ok = checks.length && checks.upper && checks.lower && checks.number && checks.special;
+                setFeedback('password', ok ? '' : 'Password does not meet all requirements.');
+            }
+
+            if (confirmPassword.value) {
+                if (confirmPassword.value !== password.value) setFeedback('confirmPassword', 'Passwords do not match.');
+                else setFeedback('confirmPassword', '');
+            }
+        });
+
+        confirmPassword.addEventListener('input', () => {
+            if (!confirmPassword.value) {
+                setFeedback('confirmPassword', '');
+                return;
+            }
+            if (confirmPassword.value !== password.value) setFeedback('confirmPassword', 'Passwords do not match.');
+            else setFeedback('confirmPassword', '');
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            clearAllFeedback();
+            formMessage.style.display = 'none';
+            formMessage.className = '';
+
+            const data = {
+                fullName: fullName.value.trim(),
+                username: username.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                country: country.value,
+                countryCode: countryCode.value,
+                password: password.value,
+                confirmPassword: confirmPassword.value,
+                agreeTerms: agreeTerms.checked,
+            };
+
+            let firstInvalid = null;
+
+            function invalid(fieldName, message, focusEl) {
+                setFeedback(fieldName, message);
+                if (!firstInvalid && focusEl) firstInvalid = focusEl;
+            }
+
+            if (!data.fullName) invalid('fullName', 'Full Name is required.', fullName);
+            if (!data.username) invalid('username', 'Username is required.', username);
+
+            if (!data.email) invalid('email', 'Email Address is required.', email);
+            else if (!isValidEmail(data.email)) invalid('email', 'Please enter a valid email address.', email);
+
+            if (!data.phone) invalid('phone', 'Phone Number is required.', phone);
+            else if (!isValidPhone(data.phone)) invalid('phone', 'Please enter a valid phone number (10–15 digits).', phone);
+
+            if (!data.country) invalid('country', 'Please select your country.', country);
+
+            const checks = passwordChecks(data.password);
+            const passwordOk = checks.length && checks.upper && checks.lower && checks.number && checks.special;
+            if (!data.password) invalid('password', 'Password is required.', password);
+            else if (!passwordOk) invalid('password', 'Use a stronger password (see requirements).', password);
+
+            if (!data.confirmPassword) invalid('confirmPassword', 'Please confirm your password.', confirmPassword);
+            else if (data.confirmPassword !== data.password) invalid('confirmPassword', 'Passwords do not match.', confirmPassword);
+
+            if (!data.agreeTerms) invalid('agreeTerms', 'You must agree to the Terms & Conditions.', agreeTerms);
+
+            if (firstInvalid) {
+                firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstInvalid.focus({ preventScroll: true });
+                return;
+            }
+
+            submitBtn.disabled = true;
+            loadingSpinner.style.display = 'block';
+
+            try {
+                await new Promise(r => setTimeout(r, 1200));
+
+                formMessage.className = 'alert alert-success';
+                formMessage.style.display = 'block';
+                formMessage.textContent = 'Account created successfully! You can now log in.';
+
+                form.reset();
+                updatePasswordMeter();
+            } catch (err) {
+                formMessage.className = 'alert alert-danger';
+                formMessage.style.display = 'block';
+                formMessage.textContent = 'Registration failed. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+            }
+        });
+
+        updatePasswordMeter();
+    </script>
+
+</body>
+</html>
