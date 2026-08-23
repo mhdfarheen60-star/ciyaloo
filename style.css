@@ -1,3 +1,147 @@
-/* This file exists to match HTML links: css/style.css */
-@import url('../style.css');
+body {
+  color: #2f2923;
+  background: #fffdf9;
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(122, 92, 62, 0.12);
+}
+
+.navbar-brand {
+  color: #7a5c3e;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.nav-link {
+  color: #3b332c;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #a97b24;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cart-link {
+  position: relative;
+  color: #7a5c3e;
+  text-decoration: none;
+}
+
+.cart-link .bi-cart3 {
+  font-size: 24px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #a97b24;
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.carousel-item img {
+  max-height: 560px;
+  object-fit: cover;
+}
+
+.card {
+  border: 1px solid rgba(122, 92, 62, 0.14);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(47, 41, 35, 0.06);
+}
+
+.product-card .card-img-top,
+.card-img-top {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #f7f1e8;
+}
+
+.product-card h5 {
+  color: #2f2923;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.product-price {
+  color: #7a5c3e;
+  font-weight: 600;
+}
+
+.product-discount {
+  color: #a97b24;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.product-desc {
+  min-height: 42px;
+  color: #75685d;
+  font-size: 14px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.74);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #fff;
+}
+
+.stars,
+.review-author {
+  color: #a97b24;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
+}
+
+.whatsapp-float .bi {
+  font-size: 28px;
+}
+
+@media (max-width: 767.98px) {
+  .nav-icons {
+    justify-content: flex-start;
+    margin-top: 16px;
+  }
+
+  footer h1,
+  .newsletter-heading {
+    font-size: 26px;
+  }
+}
 

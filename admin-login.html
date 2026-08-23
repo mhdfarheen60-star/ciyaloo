@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,265 +14,258 @@
   <link rel="icon" href="favicon.ico" />
 
   <style>
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
+    *, *::before, *::after { box-sizing: border-box; }
     body {
-      font-family: 'Poppins', sans-serif;
-      background: #FAF8F4;
+      margin: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background: linear-gradient(135deg, #faf8f4 0%, #f5f0e8 52%, #fffdf9 100%);
       color: #222;
-      overflow-x: hidden;
-    }
-
-    .bg-layer {
-      position: fixed; inset: 0; z-index: 0;
-      pointer-events: none; overflow: hidden;
-    }
-    .bg-layer::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, #FAF8F4 0%, #F5F0E8 50%, #FAF8F4 100%);
-      opacity: 0.9;
-    }
-    .blur-circle {
-      position: absolute; border-radius: 50%;
-      filter: blur(80px); opacity: 0.15;
-      animation: floatBlur 12s ease-in-out infinite alternate;
-    }
-    .blur-circle-1 { width:400px; height:400px; background:#C9A14A; top:-100px; right:-100px; }
-    .blur-circle-2 { width:350px; height:350px; background:#D6B15A; bottom:-80px; left:-80px; animation-delay:-4s; }
-    .blur-circle-3 { width:200px; height:200px; background:#B8892D; top:50%; left:50%; transform:translate(-50%,-50%); animation-delay:-8s; }
-    .perfume-silhouette {
-      position: absolute; bottom:-40px; right:-40px;
-      width:500px; height:600px;
-      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400'%3E%3Cpath d='M85,50 Q85,30 100,20 Q115,30 115,50 L115,80 L125,90 L125,110 Q125,115 120,115 L80,115 Q75,115 75,110 L75,90 L85,80 Z' fill='%23C9A14A' opacity='0.12'/%3E%3Crect x='85' y='115' width='30' height='120' rx='5' fill='%23C9A14A' opacity='0.10'/%3E%3C/svg%3E") no-repeat center;
-      background-size: contain; opacity: 0.5;
-    }
-    @keyframes floatBlur {
-      0%   { transform: translate(0,0) scale(1); }
-      100% { transform: translate(30px,-20px) scale(1.1); }
-    }
-
-    .admin-navbar {
-      position: sticky; top: 0; z-index: 1030;
-      background: #fff; min-height: 90px;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
-    }
-    .admin-navbar .navbar-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px; font-weight: 700;
-      color: #C9A14A; letter-spacing: 2px;
-      text-decoration: none; padding: 20px 0;
-    }
-    .admin-navbar .navbar-brand:hover { color:#A97B24; }
-    .admin-navbar .nav-link {
       font-family: 'Poppins', sans-serif;
-      font-size: 13px; font-weight: 500;
-      color: #222 !important; letter-spacing: 1.2px;
-      text-transform: uppercase; padding: 8px 18px !important;
-      transition: color 0.3s ease;
     }
-    .admin-navbar .nav-link:hover { color: #C9A14A !important; }
-    .admin-navbar .navbar-toggler { border: none; padding: 0; }
-    .admin-navbar .navbar-toggler:focus { box-shadow: none; }
-
-    .admin-main {
-      flex: 1; display: flex;
-      align-items: center; justify-content: center;
-      padding: 50px 20px; position: relative; z-index: 1;
+    .admin-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      min-height: 82px;
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.04);
     }
-
-    .login-card {
-      width: 100%; max-width: 460px;
-      padding: 48px 44px;
-      background: #fff; border-radius: 25px;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.08);
-      animation: fadeInUp 0.8s ease forwards;
-    }
-    @keyframes fadeInUp {
-      from { opacity:0; transform:translateY(30px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    .login-icon-wrap { text-align: center; margin-bottom: 28px; }
-    .login-icon-circle {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 80px; height: 80px; border-radius: 50%;
-      background: linear-gradient(135deg, #D6B15A, #B8892D);
-    }
-    .login-icon-circle i { font-size: 38px; color: #fff; }
-
-    .login-heading {
+    .navbar-brand {
+      color: #c9a14a;
       font-family: 'Playfair Display', serif;
-      font-size: 30px; font-weight: 700;
-      color: #222; text-align: center;
-      margin-bottom: 8px; line-height: 1.2;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    .navbar-brand:hover { color: #a97b24; }
+    .admin-navbar .nav-link {
+      color: #222 !important;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1.2px;
+      padding: 8px 18px !important;
+      text-transform: uppercase;
+    }
+    .admin-main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 48px 20px;
+    }
+    .login-card {
+      width: 100%;
+      max-width: 470px;
+      padding: 44px;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+    }
+    .login-icon-wrap { text-align: center; margin-bottom: 24px; }
+    .login-icon-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d6b15a, #b8892d);
+      color: #fff;
+      font-size: 36px;
+    }
+    .login-heading {
+      margin: 0 0 8px;
+      color: #222;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
     }
     .login-subtext {
-      font-family: 'Poppins', sans-serif;
-      font-size: 14px; color: #6C757D;
-      text-align: center; margin-bottom: 30px;
+      margin: 0 0 28px;
+      color: #6c757d;
+      font-size: 14px;
       font-weight: 300;
+      text-align: center;
     }
-
-    .login-form .form-group { margin-bottom: 22px; }
-    .login-form .input-wrapper { position: relative; }
-    .login-form .input-icon {
-      position: absolute; left: 18px; top: 50%;
-      transform: translateY(-50%); color: #999;
-      font-size: 18px; z-index: 2; pointer-events: none;
-      transition: color 0.3s ease;
+    .alert-box {
+      display: none;
+      margin-bottom: 20px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      text-align: center;
     }
-    .login-form .form-control {
-      display: block; width: 100% !important; height: 58px;
-      border-radius: 14px; border: 1.5px solid #E9E9E9;
-      background: #FAF8F4;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px; color: #222;
-      padding: 0 50px 0 50px;
-      transition: all 0.3s ease; box-shadow: none;
+    .alert-box.show { display: block; }
+    .alert-box.danger {
+      background: #fff0f0;
+      border: 1px solid #ffd6d6;
+      color: #b02a37;
     }
-    .login-form .form-control:focus {
-      border-color: #C9A14A;
-      box-shadow: 0 0 0 4px rgba(201,161,74,0.12);
-      background: #fff;
+    .alert-box.success {
+      background: #eaf6ec;
+      border: 1px solid #c6e9cf;
+      color: #1e7b3e;
     }
-    .login-form .form-control::placeholder { color: #aaa; font-weight: 300; }
-    .login-form .input-wrapper:focus-within .input-icon { color: #C9A14A; }
-
-    .password-toggle {
-      position: absolute; right: 16px; top: 50%;
+    .form-group { margin-bottom: 20px; }
+    .input-wrapper { position: relative; }
+    .input-icon {
+      position: absolute;
+      top: 50%;
+      left: 18px;
       transform: translateY(-50%);
-      background: none; border: none; color: #999;
-      font-size: 20px; cursor: pointer; padding: 8px;
-      z-index: 3; transition: color 0.3s ease;
+      color: #999;
+      font-size: 18px;
+      pointer-events: none;
     }
-    .password-toggle:hover { color: #C9A14A; }
-    .password-toggle:focus { outline: none; }
-
+    .form-control {
+      width: 100%;
+      height: 58px;
+      padding: 0 52px;
+      border: 1.5px solid #e9e9e9;
+      border-radius: 14px;
+      background: #faf8f4;
+      box-shadow: none;
+      color: #222;
+      font-size: 15px;
+    }
+    .form-control:focus {
+      border-color: #c9a14a;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(201, 161, 74, 0.12);
+    }
+    .password-toggle {
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      transform: translateY(-50%);
+      padding: 8px;
+      border: 0;
+      background: transparent;
+      color: #999;
+      font-size: 20px;
+      cursor: pointer;
+    }
     .login-options {
-      display: flex; justify-content: space-between;
-      align-items: center; margin: 6px 0 28px;
-      flex-wrap: wrap; gap: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 4px 0 26px;
+      color: #555;
+      font-size: 14px;
     }
-    .login-options .form-check {
-      display: flex; align-items: center; gap: 8px;
-      margin: 0; min-height: auto;
+    .forgot-link,
+    .text-link {
+      border: 0;
+      background: transparent;
+      color: #a97b24;
+      font: inherit;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
     }
-    .login-options .form-check-input {
-      width: 18px; height: 18px; margin: 0;
-      cursor: pointer; border: 1.5px solid #ddd;
-      background: #fff; float: none;
-    }
-    .login-options .form-check-input:checked {
-      background-color: #C9A14A; border-color: #C9A14A;
-    }
-    .login-options .form-check-label {
-      font-size: 14px; color: #555; cursor: pointer; font-weight: 400;
-    }
-    .forgot-link {
-      font-size: 14px; color: #C9A14A;
-      text-decoration: none; font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    .forgot-link:hover { color: #A97B24; text-decoration: underline; }
-
     .login-btn {
-      width: 100%; height: 58px; border-radius: 14px;
-      background: linear-gradient(135deg, #C9A14A, #A97B24);
-      border: none; color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px; font-weight: 600; letter-spacing: 1px;
-      transition: all 0.4s ease;
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 10px; cursor: pointer;
+      width: 100%;
+      height: 58px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #c9a14a, #a97b24);
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .login-btn:hover:not(:disabled) {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(201,161,74,0.35);
-      background: linear-gradient(135deg, #B8892D, #9A6E1E);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201, 161, 74, 0.35);
     }
-    .login-btn:active:not(:disabled) { transform: translateY(-1px); }
-    .login-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    .login-btn:disabled { cursor: not-allowed; opacity: 0.72; }
     .login-btn .spinner-border {
-      width: 22px; height: 22px; border-width: 2.5px; display: none;
+      display: none;
+      width: 22px;
+      height: 22px;
+      border-width: 2.5px;
     }
     .login-btn.loading .spinner-border { display: inline-block; }
     .login-btn.loading .btn-text { display: none; }
-
+    .verification-panel {
+      display: none;
+    }
+    .verification-panel.active {
+      display: block;
+    }
+    .credential-panel.hidden {
+      display: none;
+    }
+    .code-hint {
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      border: 1px dashed #c9a14a;
+      border-radius: 12px;
+      background: #fffaf0;
+      color: #5d472f;
+      font-size: 14px;
+      text-align: center;
+    }
+    .code-value {
+      display: block;
+      margin-top: 6px;
+      color: #222;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+    .step-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 16px;
+    }
     .security-notice {
-      display: flex; align-items: center; justify-content: center;
-      gap: 8px; margin-top: 26px;
-      font-size: 13px; color: #6C757D; text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 26px;
+      color: #6c757d;
+      font-size: 13px;
+      text-align: center;
     }
-    .security-notice i { font-size: 16px; color: #C9A14A; flex-shrink: 0; }
-
-    .alert-box {
-      display: none; padding: 14px 18px;
-      border-radius: 12px; font-size: 14px;
-      margin-bottom: 22px; text-align: center;
-    }
-    .alert-box.danger {
-      display: block; background: #FFF0F0;
-      color: #B02A37; border: 1px solid #FFD6D6;
-    }
-    .alert-box.success {
-      display: block; background: #EAF6EC;
-      color: #1E7B3E; border: 1px solid #C6E9CF;
-    }
-    .alert-box.show { display: block; animation: slideDown 0.4s ease; }
-    @keyframes slideDown {
-      from { opacity:0; transform:translateY(-10px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    .csrf-token-input { display: none; }
-
+    .security-notice i { color: #c9a14a; font-size: 16px; }
     .admin-footer {
-      text-align: center; padding: 24px 20px;
-      font-size: 13px; color: #6C757D;
-      position: relative; z-index: 1;
-    }
-
-    @media (max-width: 768px) {
-      .admin-navbar { min-height: 70px; }
-      .login-card { max-width: 420px; padding: 40px 32px; }
-      .login-heading { font-size: 26px; }
+      padding: 22px 20px;
+      color: #6c757d;
+      font-size: 13px;
+      text-align: center;
     }
     @media (max-width: 576px) {
-      .login-card { max-width: 100%; padding: 32px 24px; border-radius: 20px; margin: 0 10px; }
-      .login-heading { font-size: 22px; }
-      .login-form .form-control { height: 52px; font-size: 14px; }
-      .login-btn { height: 52px; font-size: 15px; }
-      .admin-navbar { min-height: 64px; }
-      .admin-navbar .navbar-brand { font-size: 22px; padding: 16px 0; }
-      .login-icon-circle { width: 68px; height: 68px; }
-      .login-icon-circle i { font-size: 32px; }
-    }
-    @media (max-width: 400px) {
-      .login-card { padding: 24px 18px; }
-      .login-icon-circle { width: 60px; height: 60px; }
-      .login-icon-circle i { font-size: 28px; }
+      .login-card {
+        padding: 32px 24px;
+        border-radius: 20px;
+      }
+      .login-heading { font-size: 24px; }
+      .form-control,
+      .login-btn { height: 52px; }
     }
   </style>
 </head>
 <body>
-  <!-- ANIMATED BACKGROUND -->
-  <div class="bg-layer" aria-hidden="true">
-    <div class="blur-circle blur-circle-1"></div>
-    <div class="blur-circle blur-circle-2"></div>
-    <div class="blur-circle blur-circle-3"></div>
-    <div class="perfume-silhouette"></div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg admin-navbar" role="navigation" aria-label="Main navigation">
+  <nav class="navbar navbar-expand-lg admin-navbar" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand" href="index.html">CIYALOO</a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav" aria-controls="adminNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-list" style="font-size:28px;color:#222;"></i>
+        <i class="bi bi-list" style="font-size: 28px; color: #222;"></i>
       </button>
       <div class="collapse navbar-collapse" id="adminNav">
         <ul class="navbar-nav ms-auto">
@@ -282,64 +275,81 @@
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
+    </div>
   </nav>
 
-  <!-- LOGIN MAIN -->
   <main class="admin-main">
     <div class="login-card">
-
-      <!-- ICON -->
       <div class="login-icon-wrap">
         <div class="login-icon-circle">
           <i class="bi bi-shield-lock-fill" aria-hidden="true"></i>
         </div>
+      </div>
 
-      <!-- HEADING -->
-      <h1 class="login-heading">Administrator Login</h1>
-      <p class="login-subtext">Secure access to the CIYALOO management dashboard.</p>
+      <h1 class="login-heading" id="loginHeading">Administrator Login</h1>
+      <p class="login-subtext" id="loginSubtext">Enter your admin credentials to continue.</p>
 
-      <!-- ALERT -->
       <div id="alertBox" class="alert-box" role="alert" aria-live="polite"></div>
 
-      <!-- FORM -->
       <form id="loginForm" class="login-form" novalidate autocomplete="off">
-        <input type="hidden" name="_csrf_token" value="PLACEHOLDER_CSRF_TOKEN" class="csrf-token-input" />
-
-        <div class="form-group">
-          <label for="username" class="visually-hidden">Username</label>
-          <div class="input-wrapper">
-            <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username" required autocomplete="username" autofocus />
-            <i class="bi bi-person input-icon" aria-hidden="true"></i>
+        <div id="credentialPanel" class="credential-panel">
+          <div class="form-group">
+            <label for="username" class="visually-hidden">Username</label>
+            <div class="input-wrapper">
+              <i class="bi bi-person input-icon" aria-hidden="true"></i>
+              <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username" required autocomplete="username" autofocus />
+            </div>
           </div>
 
-        <div class="form-group">
-          <label for="password" class="visually-hidden">Password</label>
-          <div class="input-wrapper">
-            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required autocomplete="current-password" />
-            <i class="bi bi-lock input-icon" aria-hidden="true"></i>
-            <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility" tabindex="-1">
-              <i class="bi bi-eye" id="eyeIcon"></i>
-            </button>
+          <div class="form-group">
+            <label for="password" class="visually-hidden">Password</label>
+            <div class="input-wrapper">
+              <i class="bi bi-lock input-icon" aria-hidden="true"></i>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" required autocomplete="current-password" />
+              <button type="button" class="password-toggle" id="togglePassword" aria-label="Toggle password visibility">
+                <i class="bi bi-eye" id="eyeIcon" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
 
-        <div class="login-options">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="rememberMe" />
-            <label class="form-check-label" for="rememberMe">Remember Me</label>
+          <div class="login-options">
+            <label class="form-check-label" for="rememberMe">
+              <input class="form-check-input me-2" type="checkbox" id="rememberMe" />
+              Remember me
+            </label>
+            <button type="button" class="forgot-link" id="forgotBtn">Need help?</button>
           </div>
-          <a href="#" class="forgot-link" aria-label="Forgot password">Forgot Password?</a>
+        </div>
+
+        <div id="verificationPanel" class="verification-panel">
+          <div class="code-hint">
+            Demo verification code
+            <span class="code-value" id="codeHint">------</span>
+          </div>
+          <div class="form-group">
+            <label for="verificationCode" class="visually-hidden">Verification code</label>
+            <div class="input-wrapper">
+              <i class="bi bi-key input-icon" aria-hidden="true"></i>
+              <input type="text" id="verificationCode" name="verificationCode" class="form-control" placeholder="Enter 6-digit code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" />
+            </div>
+          </div>
+          <div class="step-actions">
+            <button type="button" class="text-link" id="backBtn">Back</button>
+            <button type="button" class="text-link" id="resendCodeBtn">New code</button>
+          </div>
         </div>
 
         <button type="submit" class="login-btn" id="loginBtn">
           <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          <span class="btn-text">Sign In</span>
+          <span class="btn-text" id="buttonText">Continue</span>
         </button>
       </form>
 
       <div class="security-notice">
         <i class="bi bi-shield-check" aria-hidden="true"></i>
-        <span>Authorized personnel only. All login attempts are monitored.</span>
+        <span>Two-step verification is required for admin access.</span>
       </div>
+    </div>
   </main>
 
   <footer class="admin-footer">
@@ -348,68 +358,163 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    (function(){
+    (function () {
+      var ADMIN_USERNAME = 'admin';
+      var ADMIN_PASSWORD = 'Admin@123';
+      var CODE_TTL_MS = 5 * 60 * 1000;
+
       var form = document.getElementById('loginForm');
       var btn = document.getElementById('loginBtn');
+      var buttonText = document.getElementById('buttonText');
       var alertBox = document.getElementById('alertBox');
       var user = document.getElementById('username');
       var pass = document.getElementById('password');
+      var codeInput = document.getElementById('verificationCode');
+      var codeHint = document.getElementById('codeHint');
+      var credentialPanel = document.getElementById('credentialPanel');
+      var verificationPanel = document.getElementById('verificationPanel');
+      var heading = document.getElementById('loginHeading');
+      var subtext = document.getElementById('loginSubtext');
       var toggle = document.getElementById('togglePassword');
       var eye = document.getElementById('eyeIcon');
+      var backBtn = document.getElementById('backBtn');
+      var resendCodeBtn = document.getElementById('resendCodeBtn');
+      var forgotBtn = document.getElementById('forgotBtn');
       var submitting = false;
+      var step = 'credentials';
+      var currentCode = '';
+      var codeExpiresAt = 0;
 
-      toggle.addEventListener('click', function(){
-        var t = pass.getAttribute('type') === 'password' ? 'text' : 'password';
-        pass.setAttribute('type', t);
-        eye.className = t === 'password' ? 'bi bi-eye' : 'bi bi-eye-slash';
-      });
-
-      function showAlert(msg, type){
-        alertBox.textContent = msg;
+      function showAlert(message, type) {
+        alertBox.textContent = message;
         alertBox.className = 'alert-box ' + type + ' show';
-        clearTimeout(window._alertTimer);
-        window._alertTimer = setTimeout(function(){
-          alertBox.className = 'alert-box';
-          alertBox.textContent = '';
-        }, 5000);
       }
 
-      function hideAlert(){
-        alertBox.className = 'alert-box';
+      function hideAlert() {
         alertBox.textContent = '';
-        clearTimeout(window._alertTimer);
+        alertBox.className = 'alert-box';
       }
 
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
+      function setLoading(isLoading) {
+        submitting = isLoading;
+        btn.disabled = isLoading;
+        btn.classList.toggle('loading', isLoading);
+      }
+
+      function createCode() {
+        currentCode = String(Math.floor(100000 + Math.random() * 900000));
+        codeExpiresAt = Date.now() + CODE_TTL_MS;
+        codeHint.textContent = currentCode;
+        codeInput.value = '';
+      }
+
+      function showVerificationStep() {
+        step = 'verification';
+        createCode();
+        credentialPanel.classList.add('hidden');
+        verificationPanel.classList.add('active');
+        heading.textContent = 'Two-Step Verification';
+        subtext.textContent = 'Enter the 6-digit verification code to open the admin dashboard.';
+        buttonText.textContent = 'Verify & Sign In';
+        showAlert('Credentials accepted. Complete the second step.', 'success');
+        setTimeout(function () {
+          codeInput.focus();
+        }, 50);
+      }
+
+      function showCredentialStep() {
+        step = 'credentials';
+        verificationPanel.classList.remove('active');
+        credentialPanel.classList.remove('hidden');
+        heading.textContent = 'Administrator Login';
+        subtext.textContent = 'Enter your admin credentials to continue.';
+        buttonText.textContent = 'Continue';
+        codeInput.value = '';
         hideAlert();
-        if(submitting) return;
+        user.focus();
+      }
 
-        var u = user.value.trim();
-        var p = pass.value;
+      function completeLogin() {
+        sessionStorage.setItem('adminLoggedIn', 'true');
+        sessionStorage.setItem('adminVerifiedAt', new Date().toISOString());
+        window.location.href = 'admin.html';
+      }
 
-        if(!u){ showAlert('Please enter your username.', 'danger'); user.focus(); return; }
-        if(!p){ showAlert('Please enter your password.', 'danger'); pass.focus(); return; }
-
-        submitting = true;
-        btn.classList.add('loading');
-        btn.disabled = true;
-
-        // Simulate network delay
-        setTimeout(function(){
-          if(u === 'admin' && p === 'Admin@123'){
-            sessionStorage.setItem('adminLoggedIn', 'true');
-            window.location.href = 'admin.html';
-          } else {
-            showAlert('Invalid username or password. Please try again.', 'danger');
-            submitting = false;
-            btn.classList.remove('loading');
-            btn.disabled = false;
-          }
-        }, 1200);
+      toggle.addEventListener('click', function () {
+        var type = pass.getAttribute('type') === 'password' ? 'text' : 'password';
+        pass.setAttribute('type', type);
+        eye.className = type === 'password' ? 'bi bi-eye' : 'bi bi-eye-slash';
       });
 
-      window.addEventListener('load', function(){ user.focus(); });
+      forgotBtn.addEventListener('click', function () {
+        showAlert('Demo admin login: username admin, password Admin@123.', 'success');
+      });
+
+      backBtn.addEventListener('click', showCredentialStep);
+
+      resendCodeBtn.addEventListener('click', function () {
+        createCode();
+        showAlert('A new verification code has been generated.', 'success');
+        codeInput.focus();
+      });
+
+      codeInput.addEventListener('input', function () {
+        codeInput.value = codeInput.value.replace(/\D/g, '').slice(0, 6);
+      });
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (submitting) return;
+        hideAlert();
+
+        if (step === 'credentials') {
+          var username = user.value.trim();
+          var password = pass.value;
+
+          if (!username) {
+            showAlert('Please enter your username.', 'danger');
+            user.focus();
+            return;
+          }
+
+          if (!password) {
+            showAlert('Please enter your password.', 'danger');
+            pass.focus();
+            return;
+          }
+
+          setLoading(true);
+          setTimeout(function () {
+            setLoading(false);
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+              showVerificationStep();
+            } else {
+              showAlert('Invalid username or password. Please try again.', 'danger');
+              pass.focus();
+            }
+          }, 500);
+          return;
+        }
+
+        if (Date.now() > codeExpiresAt) {
+          showAlert('Verification code expired. Generate a new code.', 'danger');
+          codeInput.focus();
+          return;
+        }
+
+        if (codeInput.value.trim() !== currentCode) {
+          showAlert('Invalid verification code. Please try again.', 'danger');
+          codeInput.focus();
+          return;
+        }
+
+        setLoading(true);
+        setTimeout(completeLogin, 300);
+      });
+
+      window.addEventListener('load', function () {
+        user.focus();
+      });
     })();
   </script>
 </body>

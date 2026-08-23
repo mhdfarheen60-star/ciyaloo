@@ -277,16 +277,17 @@
           </li>
         </ul>
       </div>
+    </div>
   </nav>
 
   <main class="dashboard-main">
     <div class="container">
-
       <div class="d-flex flex-wrap justify-content-between align-items-start mb-4">
         <div>
           <h1 class="page-title">Dashboard</h1>
           <p class="page-subtitle">Manage your CIYALOO product inventory.</p>
         </div>
+      </div>
 
       <div id="alertMsg" class="alert-msg" role="alert"></div>
 
@@ -297,25 +298,30 @@
             <div class="stat-icon"><i class="bi bi-box-seam"></i></div>
             <div class="stat-number" id="totalProducts">0</div>
             <div class="stat-label">Total Products</div>
+          </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="stat-card">
             <div class="stat-icon"><i class="bi bi-cart-check"></i></div>
             <div class="stat-number" id="totalOrders">12</div>
             <div class="stat-label">Orders Today</div>
+          </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="stat-card">
             <div class="stat-icon"><i class="bi bi-tags"></i></div>
             <div class="stat-number" id="activeDiscounts">3</div>
             <div class="stat-label">Active Discounts</div>
+          </div>
         </div>
         <div class="col-6 col-md-3">
           <div class="stat-card">
             <div class="stat-icon"><i class="bi bi-person-circle"></i></div>
             <div class="stat-number">Admin</div>
             <div class="stat-label">Signed In</div>
+          </div>
         </div>
+      </div>
 
       <!-- Add / Edit Product -->
       <div class="admin-card" id="productFormCard">
@@ -348,6 +354,7 @@
               <button type="submit" class="gold-btn" id="saveBtn"><i class="bi bi-save me-1"></i> Save Product</button>
               <button type="button" class="gold-btn-outline" id="cancelEdit" style="display:none;">Cancel</button>
             </div>
+          </div>
         </form>
       </div>
 
@@ -378,7 +385,7 @@
           <i class="bi bi-inbox"></i>
           <p>No products yet. Add your first product above.</p>
         </div>
-
+      </div>
     </div>
   </main>
 
@@ -432,18 +439,33 @@
         renderProducts();
       }
 
+      function normalizeProductImages(){
+        var changed = false;
+        products = products.map(function(product){
+          if(product.image && product.image.indexOf('css/img/') === 0){
+            changed = true;
+            product.image = product.image.replace('css/img/', '');
+          }
+          return product;
+        });
+        if(changed){
+          localStorage.setItem('ciyalooAdminProducts', JSON.stringify(products));
+        }
+      }
+
       // Default seed products
       function seedProducts(){
         if(products.length === 0){
           products = [
-            { name:'MIREA', price:109, discount:0, image:'css/img/mirea.png', desc:'Luxury floral fragrance with lasting elegance.' },
-            { name:'ZARAH', price:79, discount:0, image:'css/img/zarah.png', desc:'Warm and exotic perfume blend.' },
-            { name:'EZRA', price:79, discount:0, image:'css/img/ezraa.jpeg', desc:'Fresh citrus and musk harmony.' },
-            { name:'ESPOIR', price:109, discount:15, image:'css/img/espoir.png', desc:'Sophisticated amber and vanilla notes.' }
+            { name:'MIREA', price:109, discount:0, image:'mirea.png', desc:'Luxury floral fragrance with lasting elegance.' },
+            { name:'ZARAH', price:79, discount:0, image:'zarah.png', desc:'Warm and exotic perfume blend.' },
+            { name:'EZRA', price:79, discount:0, image:'ezraa.jpeg', desc:'Fresh citrus and musk harmony.' },
+            { name:'ESPOIR', price:109, discount:15, image:'espoir.png', desc:'Sophisticated amber and vanilla notes.' }
           ];
           saveProducts();
         }
       }
+      normalizeProductImages();
       seedProducts();
 
       function renderProducts(){

@@ -43,6 +43,23 @@ function getCartTotal() {
   return getCart().reduce((sum, item) => sum + (item.price * item.quantity), 0);
 }
 
+function getCheckoutUrl() {
+  const cart = getCart();
+  const lines = [
+    'Hello, I would like to place an order from CIYALOO.',
+    '',
+    'Order details:',
+    ...cart.map(item => {
+      const subtotal = item.price * item.quantity;
+      return `- ${item.name} x ${item.quantity} = AED ${subtotal}`;
+    }),
+    '',
+    `Total: AED ${getCartTotal()}`,
+  ];
+
+  return 'https://wa.me/971553366389?text=' + encodeURIComponent(lines.join('\n'));
+}
+
 function updateAllCartBadges() {
   const count = getCartCount();
   document.querySelectorAll('.cart-badge').forEach(badge => {
@@ -55,11 +72,13 @@ function renderCartPage() {
   const emptyState = document.getElementById('cart-empty-state');
   const cartItems = document.getElementById('cart-items');
   const cartSummary = document.getElementById('cart-summary');
+  const checkoutBtn = document.querySelector('.cart-checkout-btn');
 
   if (cart.length === 0) {
     if (emptyState) emptyState.style.display = 'block';
     if (cartItems) cartItems.innerHTML = '';
     if (cartSummary) cartSummary.style.display = 'none';
+    if (checkoutBtn) checkoutBtn.href = '#';
     return;
   }
 
@@ -102,6 +121,7 @@ function renderCartPage() {
   const totalEl = document.getElementById('cart-total');
   if (subtotalEl) subtotalEl.textContent = 'AED ' + total;
   if (totalEl) totalEl.textContent = 'AED ' + total;
+  if (checkoutBtn) checkoutBtn.href = getCheckoutUrl();
 
   if (cartItems) {
     cartItems.querySelectorAll('.qty-btn').forEach(btn => {
@@ -127,4 +147,13 @@ function renderCartPage() {
 document.addEventListener('DOMContentLoaded', function () {
   updateAllCartBadges();
   renderCartPage();
+
+  const checkoutBtn = document.querySelector('.cart-checkout-btn');
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener('click', function (event) {
+      if (getCart().length === 0) {
+        event.preventDefault();
+      }
+    });
+  }
 });
