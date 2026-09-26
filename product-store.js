@@ -1,33 +1,33 @@
-const CIYALOO_PRODUCTS_KEY = 'ciyalooAdminProducts';
+const CIYALOO_PRODUCTS_KEY = "ciyalooAdminProducts";
 
 const DEFAULT_CIYALOO_PRODUCTS = [
   {
-    name: 'MIREA',
+    name: "MIREA",
     price: 109,
     discount: 0,
-    image: 'mirea.png',
-    desc: 'Luxury floral fragrance with lasting elegance.',
+    image: "mirea.png",
+    desc: "Luxury floral fragrance with lasting elegance.",
   },
   {
-    name: 'ZARAH',
+    name: "ZARAH",
     price: 79,
     discount: 0,
-    image: 'zarah.png',
-    desc: 'Warm and exotic perfume blend.',
+    image: "zarah.png",
+    desc: "Warm and exotic perfume blend.",
   },
   {
-    name: 'EZRA',
+    name: "EZRA",
     price: 79,
     discount: 0,
-    image: 'ezraa.jpeg',
-    desc: 'Fresh citrus and musk harmony.',
+    image: "ezraa.jpeg",
+    desc: "Fresh citrus and musk harmony.",
   },
   {
-    name: 'ESPOIR',
+    name: "ESPOIR",
     price: 109,
     discount: 15,
-    image: 'espoir.png',
-    desc: 'Sophisticated amber and vanilla notes.',
+    image: "espoir.png",
+    desc: "Sophisticated amber and vanilla notes.",
   },
 ];
 
@@ -48,7 +48,7 @@ function getStoredProducts() {
       ? products.map(normalizeProductImage)
       : DEFAULT_CIYALOO_PRODUCTS;
   } catch (error) {
-    console.warn('Unable to load CIYALOO products.', error);
+    console.warn("Unable to load CIYALOO products.", error);
     return DEFAULT_CIYALOO_PRODUCTS;
   }
 }
@@ -57,17 +57,17 @@ function normalizeProductImage(product) {
   const safeProduct = product || {};
   return {
     ...safeProduct,
-    image: String(safeProduct.image || '').replace(/^css\/img\//, ''),
+    image: String(safeProduct.image || "").replace(/^css\/img\//, ""),
   };
 }
 
 function escapeHtml(value) {
-  return String(value || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
 function getVisibleProducts(grid) {
@@ -78,7 +78,7 @@ function getVisibleProducts(grid) {
 
 function renderProductGrid(grid) {
   const products = getVisibleProducts(grid);
-  const columnClass = grid.dataset.columnClass || 'col-md-3';
+  const columnClass = grid.dataset.columnClass || "col-md-3";
 
   if (!products.length) {
     grid.innerHTML =
@@ -90,15 +90,15 @@ function renderProductGrid(grid) {
     .map(function (product, index) {
       const name = escapeHtml(product.name);
       const price = Number(product.price) || 0;
-      const image = escapeHtml(product.image || 'favicon.ico');
-      const desc = escapeHtml(product.desc || '');
+      const image = escapeHtml(product.image || "favicon.ico");
+      const desc = escapeHtml(product.desc || "");
       const priceLabel = product.discount
         ? '<p class="product-price mb-1">AED ' +
           price +
           '</p><p class="product-discount mb-3">' +
           Number(product.discount) +
-          '% OFF</p>'
-        : '<p class="product-price">AED ' + price + '</p>';
+          "% OFF</p>"
+        : '<p class="product-price">AED ' + price + "</p>";
 
       return (
         '<div class="' +
@@ -109,36 +109,73 @@ function renderProductGrid(grid) {
         image +
         '" class="card-img-top" alt="' +
         name +
-        ' perfume bottle" loading="lazy" />' +
+        ' perfume bottle" loading="lazy" decoding="async" />' +
         '<div class="card-body text-center">' +
-        '<h5>' +
+        "<h5>" +
         name +
-        '</h5>' +
-        (desc ? '<p class="product-desc">' + desc + '</p>' : '') +
+        "</h5>" +
+        (desc ? '<p class="product-desc">' + desc + "</p>" : "") +
         priceLabel +
         '<button type="button" class="btn btn-dark add-product-btn" data-product-index="' +
         index +
         '">Add to Cart</button>' +
-        '</div></div></div>'
+        "</div></div></div>"
       );
     })
-    .join('');
+    .join("");
 
-  grid.querySelectorAll('.add-product-btn').forEach(function (button) {
-    button.addEventListener('click', function () {
+  grid.querySelectorAll(".add-product-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
       const product = products[Number(this.dataset.productIndex)];
-      if (!product || typeof addToCart !== 'function') return;
+      if (!product || typeof addToCart !== "function") return;
 
       addToCart({
         name: product.name,
         price: Number(product.price) || 0,
-        image: product.image || 'favicon.ico',
+        image: product.image || "favicon.ico",
       });
-      window.location.href = 'cart.html';
+      window.location.href = "cart.html";
     });
   });
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('[data-product-grid]').forEach(renderProductGrid);
+function injectProductSchema() {
+  const products = getStoredProducts();
+  if (!products.length) return;
+
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "CIYALOO Product Collection",
+    itemListElement: products.map(function (product, index) {
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: product.name,
+          description: product.desc || "Premium fragrance from CIYALOO.",
+          image: product.image
+            ? product.image
+            : "https://ciyaloo.com/favicon.ico",
+          category: "Perfume",
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "AED",
+            price: Number(product.price) || 0,
+          },
+        },
+      };
+    }),
+  };
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("[data-product-grid]").forEach(renderProductGrid);
+  injectProductSchema();
 });
